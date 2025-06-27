@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,39 +244,42 @@
 </div>
 
 
- <!-- Signature -->
+<!-- Signature -->
 <div class="category">
   <input type="checkbox" id="toggleD" class="toggle" hidden>
   <label for="toggleD" class="category-header">Signature</label>
   <div id="typeD" class="charm-group-list collapsible">
-    <div class="charm double-charm" draggable="true" data-name="S1" data-price="4.95"
-         data-img1="images/S11.png" data-img2="images/S111.png">
+    
+    <!-- Signature Chain Charm S1 -->
+    <div class="charm double-charm" draggable="true" data-name="S1" data-price="4.95" data-chain="true">
       <div class="double-img">
-        <img src="images/S11.png" alt="S1 Part 1" class="charm-img dangling" />
-        <img src="images/S111.png" alt="S1 Part 2" class="charm-img dangling" />
+        <img src="images/S11.png" alt="S1-Part1" class="charm-img dangling" />
+        <img src="images/S111.png" alt="S1-Part2" class="charm-img dangling" />
       </div>
       <span>S1</span>
     </div>
 
-    <div class="charm double-charm" draggable="true" data-name="S2" data-price="4.95"
-         data-img1="images/S22.png" data-img2="images/S222.png">
+    <!-- Signature Chain Charm S2 -->
+    <div class="charm double-charm" draggable="true" data-name="S2" data-price="4.95" data-chain="true">
       <div class="double-img">
-        <img src="images/S22.png" alt="S2 Part 1" class="charm-img dangling" />
-        <img src="images/S222.png" alt="S2 Part 2" class="charm-img dangling" />
+        <img src="images/S22.png" alt="S2-Part1" class="charm-img dangling" />
+        <img src="images/S222.png" alt="S2-Part2" class="charm-img dangling" />
       </div>
       <span>S2</span>
     </div>
 
-    <div class="charm double-charm" draggable="true" data-name="S3" data-price="4.95"
-         data-img1="images/S33.png" data-img2="images/S333.png">
+    <!-- Signature Chain Charm S3 -->
+    <div class="charm double-charm" draggable="true" data-name="S3" data-price="4.95" data-chain="true">
       <div class="double-img">
-        <img src="images/S33.png" alt="S3 Part 1" class="charm-img dangling" />
-        <img src="images/S333.png" alt="S3 Part 2" class="charm-img dangling" />
+        <img src="images/S33.png" alt="S3-Part1" class="charm-img dangling" />
+        <img src="images/S333.png" alt="S3-Part2" class="charm-img dangling" />
       </div>
       <span>S3</span>
     </div>
+
   </div>
 </div>
+
 
 
 
@@ -305,243 +308,3 @@
   <div id="charmOrder"></div>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bracelet Configurator</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
-</head>
-<body>
-  <h1>Bracelet Configurator</h1>
-
-
-  <label for="braceletSize">Choose Bracelet Size:</label>
-  <select id="braceletSize">
-    <option value="13">Small - 13 Charms</option>
-    <option value="15" selected>Medium - 15 Charms</option>
-    <option value="17">Large - 17 Charms</option>
-    <option value="20">X-Large - 20 Charms</option>
-  </select>
-
-
-  <h2>Bracelet Preview</h2>
-  <div id="braceletPreviewContainer">
-    <div id="braceletPreview"></div>
-  </div>
-
-
-  <h2>Charms</h2>
-  <div class="charm-group">
-    <h3>Type A</h3>
-    <div id="typeA" class="charm-group-list">
-      <div class="charm" draggable="true" data-name="Plain" data-price="0.00">Plain</div>
-    </div>
-
-
-<h3>Type B</h3>
-<div id="typeB" class="charm-group-list">
-  <div class="charm" draggable="true" data-name="Crab" data-price="3.79">
-    <img src="images/A1.png" alt="Crab" class="charm-img" />
-    <span>Crab</span>
-  </div>
-  <div class="charm" draggable="true" data-name="Flower" data-price="3.79">
-    <img src="images/A6.png" alt="Flower" class="charm-img" />
-    <span>Flower</span>
-  </div>
-  <div class="charm" draggable="true" data-name="Clown" data-price="3.79">
-    <img src="images/A20.png" alt="Clown" class="charm-img" />
-    <span>Clown</span>
-  </div>
-</div>
-
-
-
-    <h3>Type C (Custom)</h3>
-    <div id="typeC" class="charm-group-list"></div>
-    <input type="file" id="imageUpload" accept="image/*">
-    <div id="cropContainer" style="display:none;">
-      <img id="cropImage">
-      <button id="cropButton">Crop & Add</button>
-    </div>
-  </div>
-
-
-  <h2>Selected Charms</h2>
-  <table>
-    <thead>
-      <tr><th>Charm</th><th>Quantity</th><th>Price (USD)</th></tr>
-    </thead>
-    <tbody id="selectedCharms"></tbody>
-  </table>
-  <p>Total: $<span id="totalPrice">0.00</span></p>
-
-
-  <h2>Charm Order</h2>
-  <div id="charmOrder"></div>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-  <script>
-    const braceletPreview = document.getElementById("braceletPreview");
-    const braceletSize = document.getElementById("braceletSize");
-    const selectedCharms = document.getElementById("selectedCharms");
-    const charmOrder = document.getElementById("charmOrder");
-    const imageUpload = document.getElementById("imageUpload");
-    const cropContainer = document.getElementById("cropContainer");
-    const cropImage = document.getElementById("cropImage");
-    const cropButton = document.getElementById("cropButton");
-    const typeC = document.getElementById("typeC");
-
-
-    let cropper;
-    let customImagesMap = new Map();
-    let customCharmCounter = 1;
-    let charmOrderList = [];
-
-
-    function resetCharmCounts() {
-      charmCounts = {};
-    }
-
-
-    function updateBracelet(size) {
-      braceletPreview.innerHTML = "";
-      charmOrderList = Array(size).fill("");
-      for (let i = 0; i < size; i++) {
-        const slot = document.createElement("div");
-        slot.className = "bracelet-slot";
-        slot.dataset.index = i;
-        slot.addEventListener("dragover", e => e.preventDefault());
-        slot.addEventListener("drop", handleDrop);
-        braceletPreview.appendChild(slot);
-      }
-      resetCharmCounts();
-      updateSelectedCharms();
-      updateCharmOrder();
-    }
-
-
-    function updateSelectedCharms() {
-      selectedCharms.innerHTML = "";
-      let total = 0;
-      const counted = {};
-
-
-      charmOrderList.forEach(name => {
-        const baseName = name.startsWith("Custom Charm") ? "Custom Charm" : name;
-        if (baseName && baseName !== "empty") {
-          counted[baseName] = (counted[baseName] || 0) + 1;
-        }
-      });
-
-
-      for (const name in counted) {
-        const price = name === 'Custom Charm' ? 3.79 : getCharmPrice(name);
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${name}</td><td>${counted[name]}</td><td>$${(price * counted[name]).toFixed(2)}</td>`;
-        selectedCharms.appendChild(row);
-        total += price * counted[name];
-      }
-      document.getElementById("totalPrice").textContent = total.toFixed(2);
-    }
-
-
-    function updateCharmOrder() {
-      charmOrder.innerHTML = charmOrderList.map(name => name || "empty").join(", ");
-    }
-
-
-    function handleDrop(e) {
-      const charmName = e.dataTransfer.getData("text/plain");
-      const imgSrc = e.dataTransfer.getData("img-src") || null;
-      const index = e.currentTarget.dataset.index;
-
-
-      let displayName = charmName;
-
-
-      if (charmName === "Custom Charm") {
-        if (customImagesMap.has(imgSrc)) {
-          displayName = customImagesMap.get(imgSrc);
-        } else {
-          displayName = `Custom Charm ${customCharmCounter++}`;
-          customImagesMap.set(imgSrc, displayName);
-        }
-      }
-
-
-      charmOrderList[index] = displayName;
-      e.currentTarget.innerHTML = imgSrc ? `<img src="${imgSrc}" alt="${displayName}">` : displayName;
-      updateCharmOrder();
-      updateSelectedCharms();
-    }
-
-
-    document.querySelectorAll('.charm').forEach(charm => {
-      charm.addEventListener('dragstart', e => {
-        e.dataTransfer.setData('text/plain', charm.dataset.name);
-        const img = charm.querySelector('img');
-        if (img) e.dataTransfer.setData('img-src', img.src);
-      });
-    });
-
-
-    braceletSize.addEventListener("change", e => updateBracelet(+e.target.value));
-
-
-    imageUpload.addEventListener("change", e => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          cropImage.src = evt.target.result;
-          cropContainer.style.display = 'block';
-          if (cropper) cropper.destroy();
-          cropper = new Cropper(cropImage, { aspectRatio: 1, viewMode: 1 });
-        }
-        reader.readAsDataURL(file);
-      }
-    });
-
-
-    cropButton.addEventListener("click", () => {
-      const canvas = cropper.getCroppedCanvas({ width: 60, height: 60 });
-      const imgURL = canvas.toDataURL();
-
-
-      const charm = document.createElement("div");
-      charm.className = "charm";
-      charm.setAttribute("draggable", "true");
-      charm.dataset.name = `Custom Charm`;
-      charm.dataset.price = "3.79";
-      charm.innerHTML = `<img src="${imgURL}" alt="Custom Charm" /> Custom`;
-
-
-      charm.addEventListener('dragstart', e => {
-        e.dataTransfer.setData('text/plain', charm.dataset.name);
-        e.dataTransfer.setData('img-src', imgURL);
-      });
-
-
-      typeC.appendChild(charm);
-      cropContainer.style.display = 'none';
-      imageUpload.value = "";
-    });
-
-
-    function getCharmPrice(name) {
-      if (name === 'Custom Charm') return 3.79;
-      const charm = document.querySelector(`.charm[data-name='${name}']`);
-      return charm ? parseFloat(charm.dataset.price) : 0;
-    }
-
-
-    updateBracelet(+braceletSize.value);
-  </script>
-</body>
-</html>
->>>>>>> 20afffc96091ea0d2405ab8a13c028502cf353cc
