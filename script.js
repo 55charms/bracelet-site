@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPriceSpan = document.getElementById('totalPrice');
   const charmOrderDiv = document.getElementById('charmOrder');
   const counterDisplay = document.getElementById('braceletCounter');
-  const typeCContainer = document.getElementById('typeC');
+  const customContainer = document.getElementById('customCharms');
   const cropContainer = document.getElementById('cropContainer');
   const cropImage = document.getElementById('cropImage');
   const cropButton = document.getElementById('cropButton');
@@ -212,7 +212,7 @@ const secondImg = `images/${name}${name[1]}${name[1]}.png`;
       e.dataTransfer.setData('chain', 'false');
     });
 
-    typeCContainer.appendChild(charm);
+  customContainer.appendChild(charm);
     cropContainer.style.display = 'none';
     imageUpload.value = '';
     cropper.destroy();

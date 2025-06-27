@@ -75,10 +75,14 @@ select {
 
 .charm-group-list {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  gap: 10px;
 }
+
+#customCharms {
+  margin-top: 10px;
+}
+
 
 .charm {
   padding: 6px;
