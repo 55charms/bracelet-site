@@ -1,0 +1,547 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bracelet Configurator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>Bracelet Configurator</h1>
+
+  <label for="braceletSize">Choose Bracelet Size:</label>
+  <select id="braceletSize">
+    <option value="15">Extra Small - 15 Charms</option>
+     <option value="16">Small - 16 Charms</option>
+    <option value="18">Medium - 18 Charms</option>
+    <option value="19">Large - 19 Charms</option>
+    <option value="20">Extra Large - 20 Charms</option>
+  </select>
+
+  <div id="braceletCounter"></div>
+
+  <h2>Bracelet Preview</h2>
+  <div id="braceletPreviewContainer">
+    <div id="braceletPreview"></div>
+  </div>
+
+  <h2>Charms</h2>
+
+<!-- Basic -->
+<div class="category">
+  <input type="checkbox" id="toggleA" class="toggle" hidden>
+  <label for="toggleA" class="category-header">Basic</label>
+  <div id="typeA" class="charm-group-list collapsible">
+    <div class="charm" draggable="true" data-name="Plain" data-price="1">
+      <img src="images/Plain.png" alt="Plain" />
+      <span>B1</span>
+    </div>
+
+    <!-- B1 to B33 -->
+    <div class="charm" draggable="true" data-name="B1" data-price="1.95">
+      <img src="images/B1.png" alt="B1" />
+      <span>B1</span>
+    </div>
+    <div class="charm" draggable="true" data-name="B2" data-price="1.95">
+      <img src="images/B2.png" alt="B2" />
+      <span>B2</span>
+    </div>
+    <div class="charm" draggable="true" data-name="B3" data-price="1.95">
+      <img src="images/B3.png" alt="B3" />
+      <span>B3</span>
+    </div>
+    <!-- Continue this pattern... -->
+    <!-- Auto-generated below -->
+    <div class="charm" draggable="true" data-name="B4" data-price="1.95"><img src="images/B4.png" alt="B4" /><span>B4</span></div>
+    <div class="charm" draggable="true" data-name="B5" data-price="1.95"><img src="images/B5.png" alt="B5" /><span>B5</span></div>
+    <div class="charm" draggable="true" data-name="B6" data-price="1.95"><img src="images/B6.png" alt="B6" /><span>B6</span></div>
+    <div class="charm" draggable="true" data-name="B7" data-price="1.95"><img src="images/B7.png" alt="B7" /><span>B7</span></div>
+    <div class="charm" draggable="true" data-name="B8" data-price="1.95"><img src="images/B8.png" alt="B8" /><span>B8</span></div>
+    <div class="charm" draggable="true" data-name="B9" data-price="1.95"><img src="images/B9.png" alt="B9" /><span>B9</span></div>
+    <div class="charm" draggable="true" data-name="B10" data-price="1.95"><img src="images/B10.png" alt="B10" /><span>B10</span></div>
+    <div class="charm" draggable="true" data-name="B11" data-price="1.95"><img src="images/B11.png" alt="B11" /><span>B11</span></div>
+    <div class="charm" draggable="true" data-name="B12" data-price="1.95"><img src="images/B12.png" alt="B12" /><span>B12</span></div>
+    <div class="charm" draggable="true" data-name="B13" data-price="1.95"><img src="images/B13.png" alt="B13" /><span>B13</span></div>
+    <div class="charm" draggable="true" data-name="B14" data-price="1.95"><img src="images/B14.png" alt="B14" /><span>B14</span></div>
+    <div class="charm" draggable="true" data-name="B15" data-price="1.95"><img src="images/B15.png" alt="B15" /><span>B15</span></div>
+    <div class="charm" draggable="true" data-name="B16" data-price="1.95"><img src="images/B16.png" alt="B16" /><span>B16</span></div>
+    <div class="charm" draggable="true" data-name="B17" data-price="1.95"><img src="images/B17.png" alt="B17" /><span>B17</span></div>
+    <div class="charm" draggable="true" data-name="B18" data-price="1.95"><img src="images/B18.png" alt="B18" /><span>B18</span></div>
+    <div class="charm" draggable="true" data-name="B19" data-price="1.95"><img src="images/B19.png" alt="B19" /><span>B19</span></div>
+    <div class="charm" draggable="true" data-name="B20" data-price="1.95"><img src="images/B20.png" alt="B20" /><span>B20</span></div>
+    <div class="charm" draggable="true" data-name="B21" data-price="1.95"><img src="images/B21.png" alt="B21" /><span>B21</span></div>
+    <div class="charm" draggable="true" data-name="B22" data-price="1.95"><img src="images/B22.png" alt="B22" /><span>B22</span></div>
+    <div class="charm" draggable="true" data-name="B23" data-price="1.95"><img src="images/B23.png" alt="B23" /><span>B23</span></div>
+    <div class="charm" draggable="true" data-name="B24" data-price="1.95"><img src="images/B24.png" alt="B24" /><span>B24</span></div>
+    <div class="charm" draggable="true" data-name="B25" data-price="1.95"><img src="images/B25.png" alt="B25" /><span>B25</span></div>
+    <div class="charm" draggable="true" data-name="B26" data-price="1.95"><img src="images/B26.png" alt="B26" /><span>B26</span></div>
+    <div class="charm" draggable="true" data-name="B27" data-price="1.95"><img src="images/B27.png" alt="B27" /><span>B27</span></div>
+    <div class="charm" draggable="true" data-name="B28" data-price="1.95"><img src="images/B28.png" alt="B28" /><span>B28</span></div>
+    <div class="charm" draggable="true" data-name="B29" data-price="1.95"><img src="images/B29.png" alt="B29" /><span>B29</span></div>
+    <div class="charm" draggable="true" data-name="B30" data-price="1.95"><img src="images/B30.png" alt="B30" /><span>B30</span></div>
+    <div class="charm" draggable="true" data-name="B31" data-price="1.95"><img src="images/B31.png" alt="B31" /><span>B31</span></div>
+    <div class="charm" draggable="true" data-name="B32" data-price="1.95"><img src="images/B32.png" alt="B32" /><span>B32</span></div>
+    <div class="charm" draggable="true" data-name="B33" data-price="1.95"><img src="images/B33.png" alt="B33" /><span>B33</span></div>
+  </div>
+</div>
+
+
+  <!-- Classic -->
+<div class="category">
+  <input type="checkbox" id="toggleB" class="toggle" hidden>
+  <label for="toggleB" class="category-header">Classic</label>
+  <div id="typeB" class="charm-group-list collapsible">
+    <div class="charm" draggable="true" data-name="C1" data-price="2.35">
+      <img src="images/C1.png" alt="C1" />
+      <span>C1</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C2" data-price="2.35">
+      <img src="images/C2.png" alt="C2" />
+      <span>C2</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C3" data-price="2.35">
+      <img src="images/C3.png" alt="C3" />
+      <span>C3</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C4" data-price="2.35">
+      <img src="images/C4.png" alt="C4" />
+      <span>C4</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C5" data-price="2.35">
+      <img src="images/C5.png" alt="C5" />
+      <span>C5</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C6" data-price="2.35">
+      <img src="images/C6.png" alt="C6" />
+      <span>C6</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C7" data-price="2.35">
+      <img src="images/C7.png" alt="C7" />
+      <span>C7</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C8" data-price="2.35">
+      <img src="images/C8.png" alt="C8" />
+      <span>C8</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C9" data-price="2.35">
+      <img src="images/C9.png" alt="C9" />
+      <span>C9</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C10" data-price="2.35">
+      <img src="images/C10.png" alt="C10" />
+      <span>C10</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C11" data-price="2.35">
+      <img src="images/C11.png" alt="C11" />
+      <span>C11</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C12" data-price="2.35">
+      <img src="images/C12.png" alt="C12" />
+      <span>C12</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C13" data-price="2.35">
+      <img src="images/C13.png" alt="C13" />
+      <span>C13</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C14" data-price="2.35">
+      <img src="images/C14.png" alt="C14" />
+      <span>C14</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C15" data-price="2.35">
+      <img src="images/C15.png" alt="C15" />
+      <span>C15</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C16" data-price="2.35">
+      <img src="images/C16.png" alt="C16" />
+      <span>C16</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C17" data-price="2.35">
+      <img src="images/C17.png" alt="C17" />
+      <span>C17</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C18" data-price="2.35">
+      <img src="images/C18.png" alt="C18" />
+      <span>C18</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C19" data-price="2.35">
+      <img src="images/C19.png" alt="C19" />
+      <span>C19</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C20" data-price="2.35">
+      <img src="images/C20.png" alt="C20" />
+      <span>C20</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C21" data-price="2.35">
+      <img src="images/C21.png" alt="C21" />
+      <span>C21</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C22" data-price="2.35">
+      <img src="images/C22.png" alt="C22" />
+      <span>C22</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C23" data-price="2.35">
+      <img src="images/C23.png" alt="C23" />
+      <span>C23</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C24" data-price="2.35">
+      <img src="images/C24.png" alt="C24" />
+      <span>C24</span>
+    </div>
+    <div class="charm" draggable="true" data-name="C25" data-price="2.35">
+      <img src="images/C25.png" alt="C25" />
+      <span>C25</span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Premium -->
+<div class="category">
+  <input type="checkbox" id="toggleC" class="toggle" hidden>
+  <label for="toggleC" class="category-header">Premium</label>
+  <div id="typeC" class="charm-group-list collapsible">
+    <div class="charm" draggable="true" data-name="P1" data-price="2.95">
+      <img src="images/P1.png" alt="P1" />
+      <span>P1</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P2" data-price="2.95">
+      <img src="images/P2.png" alt="P2" />
+      <span>P2</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P3" data-price="2.95">
+      <img src="images/P3.png" alt="P3" />
+      <span>P3</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P4" data-price="2.95">
+      <img src="images/P4.png" alt="P4" />
+      <span>P4</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P5" data-price="2.95">
+      <img src="images/P5.png" alt="P5" />
+      <span>P5</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P6" data-price="2.50">
+      <img src="images/P6.png" alt="P6" />
+      <span>P6</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P7" data-price="2.50">
+      <img src="images/P7.png" alt="P7" />
+      <span>P7</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P8" data-price="2.50">
+      <img src="images/P8.png" alt="P8" />
+      <span>P8</span>
+    </div>
+    <div class="charm" draggable="true" data-name="P9" data-price="2.95">
+      <img src="images/P9.png" alt="P9" />
+      <span>P9</span>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Signature -->
+<div class="category">
+  <input type="checkbox" id="toggleD" class="toggle" hidden>
+  <label for="toggleD" class="category-header">Signature</label>
+  <div id="typeD" class="charm-group-list collapsible">
+    <div class="charm double-charm" draggable="true" data-name="S1" data-price="4.95"
+         data-img1="images/S11.png" data-img2="images/S111.png">
+      <div class="double-img">
+        <img src="images/S11.png" alt="S1 Part 1" class="charm-img dangling" />
+        <img src="images/S111.png" alt="S1 Part 2" class="charm-img dangling" />
+      </div>
+      <span>S1</span>
+    </div>
+
+    <div class="charm double-charm" draggable="true" data-name="S2" data-price="4.95"
+         data-img1="images/S22.png" data-img2="images/S222.png">
+      <div class="double-img">
+        <img src="images/S22.png" alt="S2 Part 1" class="charm-img dangling" />
+        <img src="images/S222.png" alt="S2 Part 2" class="charm-img dangling" />
+      </div>
+      <span>S2</span>
+    </div>
+
+    <div class="charm double-charm" draggable="true" data-name="S3" data-price="4.95"
+         data-img1="images/S33.png" data-img2="images/S333.png">
+      <div class="double-img">
+        <img src="images/S33.png" alt="S3 Part 1" class="charm-img dangling" />
+        <img src="images/S333.png" alt="S3 Part 2" class="charm-img dangling" />
+      </div>
+      <span>S3</span>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- CUSTOM -->
+  <div class="category">
+    <input type="checkbox" id="toggleCustom" class="toggle" hidden>
+    <label for="toggleCustom" class="category-header">Custom</label>
+    <div id="customCharms" class="charm-group-list collapsible"></div>
+    <input type="file" id="imageUpload" accept="image/*">
+    <div id="cropContainer" style="display:none;">
+      <img id="cropImage">
+      <button id="cropButton">Crop & Add</button>
+    </div>
+  </div>
+
+  <h2>Selected Charms</h2>
+  <table>
+    <thead>
+      <tr><th>Charm</th><th>Quantity</th><th>Price (SGD)</th></tr>
+    </thead>
+    <tbody id="selectedCharms"></tbody>
+  </table>
+  <p>Total: $<span id="totalPrice">0.00</span></p>
+
+  <h2>Charm Order</h2>
+  <div id="charmOrder"></div>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bracelet Configurator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+</head>
+<body>
+  <h1>Bracelet Configurator</h1>
+
+
+  <label for="braceletSize">Choose Bracelet Size:</label>
+  <select id="braceletSize">
+    <option value="13">Small - 13 Charms</option>
+    <option value="15" selected>Medium - 15 Charms</option>
+    <option value="17">Large - 17 Charms</option>
+    <option value="20">X-Large - 20 Charms</option>
+  </select>
+
+
+  <h2>Bracelet Preview</h2>
+  <div id="braceletPreviewContainer">
+    <div id="braceletPreview"></div>
+  </div>
+
+
+  <h2>Charms</h2>
+  <div class="charm-group">
+    <h3>Type A</h3>
+    <div id="typeA" class="charm-group-list">
+      <div class="charm" draggable="true" data-name="Plain" data-price="0.00">Plain</div>
+    </div>
+
+
+<h3>Type B</h3>
+<div id="typeB" class="charm-group-list">
+  <div class="charm" draggable="true" data-name="Crab" data-price="3.79">
+    <img src="images/A1.png" alt="Crab" class="charm-img" />
+    <span>Crab</span>
+  </div>
+  <div class="charm" draggable="true" data-name="Flower" data-price="3.79">
+    <img src="images/A6.png" alt="Flower" class="charm-img" />
+    <span>Flower</span>
+  </div>
+  <div class="charm" draggable="true" data-name="Clown" data-price="3.79">
+    <img src="images/A20.png" alt="Clown" class="charm-img" />
+    <span>Clown</span>
+  </div>
+</div>
+
+
+
+    <h3>Type C (Custom)</h3>
+    <div id="typeC" class="charm-group-list"></div>
+    <input type="file" id="imageUpload" accept="image/*">
+    <div id="cropContainer" style="display:none;">
+      <img id="cropImage">
+      <button id="cropButton">Crop & Add</button>
+    </div>
+  </div>
+
+
+  <h2>Selected Charms</h2>
+  <table>
+    <thead>
+      <tr><th>Charm</th><th>Quantity</th><th>Price (USD)</th></tr>
+    </thead>
+    <tbody id="selectedCharms"></tbody>
+  </table>
+  <p>Total: $<span id="totalPrice">0.00</span></p>
+
+
+  <h2>Charm Order</h2>
+  <div id="charmOrder"></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script>
+    const braceletPreview = document.getElementById("braceletPreview");
+    const braceletSize = document.getElementById("braceletSize");
+    const selectedCharms = document.getElementById("selectedCharms");
+    const charmOrder = document.getElementById("charmOrder");
+    const imageUpload = document.getElementById("imageUpload");
+    const cropContainer = document.getElementById("cropContainer");
+    const cropImage = document.getElementById("cropImage");
+    const cropButton = document.getElementById("cropButton");
+    const typeC = document.getElementById("typeC");
+
+
+    let cropper;
+    let customImagesMap = new Map();
+    let customCharmCounter = 1;
+    let charmOrderList = [];
+
+
+    function resetCharmCounts() {
+      charmCounts = {};
+    }
+
+
+    function updateBracelet(size) {
+      braceletPreview.innerHTML = "";
+      charmOrderList = Array(size).fill("");
+      for (let i = 0; i < size; i++) {
+        const slot = document.createElement("div");
+        slot.className = "bracelet-slot";
+        slot.dataset.index = i;
+        slot.addEventListener("dragover", e => e.preventDefault());
+        slot.addEventListener("drop", handleDrop);
+        braceletPreview.appendChild(slot);
+      }
+      resetCharmCounts();
+      updateSelectedCharms();
+      updateCharmOrder();
+    }
+
+
+    function updateSelectedCharms() {
+      selectedCharms.innerHTML = "";
+      let total = 0;
+      const counted = {};
+
+
+      charmOrderList.forEach(name => {
+        const baseName = name.startsWith("Custom Charm") ? "Custom Charm" : name;
+        if (baseName && baseName !== "empty") {
+          counted[baseName] = (counted[baseName] || 0) + 1;
+        }
+      });
+
+
+      for (const name in counted) {
+        const price = name === 'Custom Charm' ? 3.79 : getCharmPrice(name);
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${name}</td><td>${counted[name]}</td><td>$${(price * counted[name]).toFixed(2)}</td>`;
+        selectedCharms.appendChild(row);
+        total += price * counted[name];
+      }
+      document.getElementById("totalPrice").textContent = total.toFixed(2);
+    }
+
+
+    function updateCharmOrder() {
+      charmOrder.innerHTML = charmOrderList.map(name => name || "empty").join(", ");
+    }
+
+
+    function handleDrop(e) {
+      const charmName = e.dataTransfer.getData("text/plain");
+      const imgSrc = e.dataTransfer.getData("img-src") || null;
+      const index = e.currentTarget.dataset.index;
+
+
+      let displayName = charmName;
+
+
+      if (charmName === "Custom Charm") {
+        if (customImagesMap.has(imgSrc)) {
+          displayName = customImagesMap.get(imgSrc);
+        } else {
+          displayName = `Custom Charm ${customCharmCounter++}`;
+          customImagesMap.set(imgSrc, displayName);
+        }
+      }
+
+
+      charmOrderList[index] = displayName;
+      e.currentTarget.innerHTML = imgSrc ? `<img src="${imgSrc}" alt="${displayName}">` : displayName;
+      updateCharmOrder();
+      updateSelectedCharms();
+    }
+
+
+    document.querySelectorAll('.charm').forEach(charm => {
+      charm.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', charm.dataset.name);
+        const img = charm.querySelector('img');
+        if (img) e.dataTransfer.setData('img-src', img.src);
+      });
+    });
+
+
+    braceletSize.addEventListener("change", e => updateBracelet(+e.target.value));
+
+
+    imageUpload.addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          cropImage.src = evt.target.result;
+          cropContainer.style.display = 'block';
+          if (cropper) cropper.destroy();
+          cropper = new Cropper(cropImage, { aspectRatio: 1, viewMode: 1 });
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+
+    cropButton.addEventListener("click", () => {
+      const canvas = cropper.getCroppedCanvas({ width: 60, height: 60 });
+      const imgURL = canvas.toDataURL();
+
+
+      const charm = document.createElement("div");
+      charm.className = "charm";
+      charm.setAttribute("draggable", "true");
+      charm.dataset.name = `Custom Charm`;
+      charm.dataset.price = "3.79";
+      charm.innerHTML = `<img src="${imgURL}" alt="Custom Charm" /> Custom`;
+
+
+      charm.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', charm.dataset.name);
+        e.dataTransfer.setData('img-src', imgURL);
+      });
+
+
+      typeC.appendChild(charm);
+      cropContainer.style.display = 'none';
+      imageUpload.value = "";
+    });
+
+
+    function getCharmPrice(name) {
+      if (name === 'Custom Charm') return 3.79;
+      const charm = document.querySelector(`.charm[data-name='${name}']`);
+      return charm ? parseFloat(charm.dataset.price) : 0;
+    }
+
+
+    updateBracelet(+braceletSize.value);
+  </script>
+</body>
+</html>
+>>>>>>> 20afffc96091ea0d2405ab8a13c028502cf353cc
