@@ -16,9 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let charmCounts = {};
   let chainIdCounter = 0;
 
-  let customCharmCounter = 1;
-  let customCharmMap = {}; // maps dataUrl to "CustomX"
-
   function updateCounter() {
     const used = braceletPreview.querySelectorAll('.bracelet-slot:not(.empty)').length;
     const total = parseInt(braceletSizeSelect.value);
@@ -88,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Not enough space or overlapping charm for this chain charm.');
           return;
         }
-
         const chainId = `chain-${chainIdCounter++}`;
         const firstImg = `images/${name}${name[1]}.png`;
         const secondImg = `images/${name}${name[1]}${name[1]}.png`;
@@ -98,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         charmCounts[name] = charmCounts[name] || { count: 0, price };
         charmCounts[name].count++;
-
       } else {
         if (!slot.classList.contains('empty')) return;
         placeCharmInSlot(slot, name, imgSrc, price);
@@ -145,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (charmCounts[name].count === 0) delete charmCounts[name];
         }
       }
-
       updateSelectedCharmsTable();
       updateTotal();
       updateCounter();
@@ -166,10 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharmOrder();
   }
 
-  braceletSizeSelect.addEventListener('change', () => {
-    resetBracelet(parseInt(braceletSizeSelect.value));
-  });
-
+  // TAP TO SELECT for all standard charms
   document.querySelectorAll('.charm[draggable="true"]').forEach(charm => {
     charm.addEventListener('dragstart', e => {
       const img = charm.querySelector('img');
@@ -178,7 +169,46 @@ document.addEventListener('DOMContentLoaded', () => {
       e.dataTransfer.setData('img', img ? img.src : '');
       e.dataTransfer.setData('chain', charm.dataset.chain || 'false');
     });
+
+    charm.addEventListener('click', () => {
+      const img = charm.querySelector('img');
+      handleTapPlacement(
+        charm.dataset.name,
+        charm.dataset.price,
+        img ? img.src : '',
+        charm.dataset.chain === 'true'
+      );
+    });
   });
+
+  function handleTapPlacement(name, price, imgSrc, isChain) {
+    const slots = braceletPreview.querySelectorAll('.bracelet-slot');
+    for (let i = 0; i < slots.length; i++) {
+      if (slots[i].classList.contains('empty')) {
+        if (isChain) {
+          const secondIndex = i + 3;
+          if (secondIndex < slots.length && slots[secondIndex].classList.contains('empty')) {
+            const chainId = `chain-${chainIdCounter++}`;
+            const firstImg = `images/${name}${name[1]}.png`;
+            const secondImg = `images/${name}${name[1]}${name[1]}.png`;
+            placeCharmInSlot(slots[i], name, firstImg, parseFloat(price), chainId);
+            placeCharmInSlot(slots[secondIndex], name, secondImg, 0, chainId);
+            charmCounts[name] = charmCounts[name] || { count: 0, price: parseFloat(price) };
+            charmCounts[name].count++;
+          }
+        } else {
+          placeCharmInSlot(slots[i], name, imgSrc, parseFloat(price));
+          charmCounts[name] = charmCounts[name] || { count: 0, price: parseFloat(price) };
+          charmCounts[name].count++;
+        }
+        updateSelectedCharmsTable();
+        updateTotal();
+        updateCounter();
+        updateCharmOrder();
+        break;
+      }
+    }
+  }
 
   imageUpload.addEventListener('change', e => {
     const file = e.target.files[0];
@@ -198,14 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cropButton.addEventListener('click', () => {
     const canvas = cropper.getCroppedCanvas({ width: 70, height: 70 });
     const dataUrl = canvas.toDataURL();
-
-    let customName;
-    if (customCharmMap[dataUrl]) {
-      customName = customCharmMap[dataUrl];
-    } else {
-      customName = `Custom${customCharmCounter++}`;
-      customCharmMap[dataUrl] = customName;
-    }
+    const customName = `Custom${Object.keys(charmCounts).filter(k => k.startsWith('Custom')).length + 1}`;
 
     const charm = document.createElement('div');
     charm.className = 'charm';
@@ -221,68 +244,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.dataTransfer.setData('chain', 'false');
     });
 
+    charm.addEventListener('click', () => {
+      handleTapPlacement(customName, '3.00', dataUrl, false);
+    });
+
     customContainer.appendChild(charm);
-    document.getElementById('toggleCustom').checked = true;
     cropContainer.style.display = 'none';
     imageUpload.value = '';
     cropper.destroy();
   });
 
   resetBracelet(parseInt(braceletSizeSelect.value));
-
-  // ---- Tap to place for mobile ----
-let selectedCharm = null;
-
-// When user taps a charm, set it as selected
-document.querySelectorAll('.charm').forEach(charm => {
-  charm.addEventListener('click', () => {
-    selectedCharm = charm;
-    // Optional: highlight selected charm
-    document.querySelectorAll('.charm').forEach(c => c.classList.remove('selected-charm'));
-    charm.classList.add('selected-charm');
-  });
-});
-
-// When user taps a slot, place the selected charm
-braceletPreview.addEventListener('click', e => {
-  if (!selectedCharm) return;
-  const slot = e.target.closest('.bracelet-slot');
-  if (!slot || !slot.classList.contains('empty')) return;
-
-  const name = selectedCharm.dataset.name;
-  const price = parseFloat(selectedCharm.dataset.price);
-  const img = selectedCharm.querySelector('img').src;
-  const isChain = selectedCharm.dataset.chain === 'true';
-  const index = Array.from(braceletPreview.children).indexOf(slot);
-  const slots = braceletPreview.querySelectorAll('.bracelet-slot');
-
-  if (isChain) {
-    const secondIndex = index + 3;
-    if (secondIndex >= slots.length || !slots[secondIndex].classList.contains('empty')) {
-      alert('Not enough space or overlapping charm for this chain charm.');
-      return;
-    }
-    const chainId = `chain-${chainIdCounter++}`;
-    const firstImg = `images/${name}${name[1]}.png`;
-    const secondImg = `images/${name}${name[1]}${name[1]}.png`;
-    placeCharmInSlot(slots[index], name, firstImg, price, chainId);
-    placeCharmInSlot(slots[secondIndex], name, secondImg, 0, chainId);
-    charmCounts[name] = charmCounts[name] || { count: 0, price };
-    charmCounts[name].count++;
-  } else {
-    placeCharmInSlot(slot, name, img, price);
-    charmCounts[name] = charmCounts[name] || { count: 0, price };
-    charmCounts[name].count++;
-  }
-
-  updateSelectedCharmsTable();
-  updateTotal();
-  updateCounter();
-  updateCharmOrder();
-
-  // Deselect after placing
-  selectedCharm = null;
-  document.querySelectorAll('.charm').forEach(c => c.classList.remove('selected-charm'));
-});
-
 });
