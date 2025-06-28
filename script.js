@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let charmCounts = {};
   let chainIdCounter = 0;
 
+  let customCharmCounter = 1;
+  let customCharmMap = {}; // maps dataUrl to "CustomX"
+
   function updateCounter() {
     const used = braceletPreview.querySelectorAll('.bracelet-slot:not(.empty)').length;
     const total = parseInt(braceletSizeSelect.value);
@@ -87,9 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const chainId = `chain-${chainIdCounter++}`;
-       const firstImg = `images/${name}${name[1]}.png`;
-const secondImg = `images/${name}${name[1]}${name[1]}.png`;
-
+        const firstImg = `images/${name}${name[1]}.png`;
+        const secondImg = `images/${name}${name[1]}${name[1]}.png`;
 
         placeCharmInSlot(slots[index], name, firstImg, price, chainId);
         placeCharmInSlot(slots[secondIndex], name, secondImg, 0, chainId);
@@ -196,14 +198,21 @@ const secondImg = `images/${name}${name[1]}${name[1]}.png`;
   cropButton.addEventListener('click', () => {
     const canvas = cropper.getCroppedCanvas({ width: 70, height: 70 });
     const dataUrl = canvas.toDataURL();
-    const customName = `Custom${Date.now()}`;
+
+    let customName;
+    if (customCharmMap[dataUrl]) {
+      customName = customCharmMap[dataUrl];
+    } else {
+      customName = `Custom${customCharmCounter++}`;
+      customCharmMap[dataUrl] = customName;
+    }
 
     const charm = document.createElement('div');
     charm.className = 'charm';
     charm.setAttribute('draggable', 'true');
     charm.dataset.name = customName;
     charm.dataset.price = '3.00';
-    charm.innerHTML = `<img src="${dataUrl}" alt="${customName}" /><span>Custom</span>`;
+    charm.innerHTML = `<img src="${dataUrl}" alt="${customName}" /><span>${customName}</span>`;
 
     charm.addEventListener('dragstart', e => {
       e.dataTransfer.setData('name', customName);
@@ -212,11 +221,68 @@ const secondImg = `images/${name}${name[1]}${name[1]}.png`;
       e.dataTransfer.setData('chain', 'false');
     });
 
-  customContainer.appendChild(charm);
+    customContainer.appendChild(charm);
+    document.getElementById('toggleCustom').checked = true;
     cropContainer.style.display = 'none';
     imageUpload.value = '';
     cropper.destroy();
   });
 
   resetBracelet(parseInt(braceletSizeSelect.value));
+
+  // ---- Tap to place for mobile ----
+let selectedCharm = null;
+
+// When user taps a charm, set it as selected
+document.querySelectorAll('.charm').forEach(charm => {
+  charm.addEventListener('click', () => {
+    selectedCharm = charm;
+    // Optional: highlight selected charm
+    document.querySelectorAll('.charm').forEach(c => c.classList.remove('selected-charm'));
+    charm.classList.add('selected-charm');
+  });
+});
+
+// When user taps a slot, place the selected charm
+braceletPreview.addEventListener('click', e => {
+  if (!selectedCharm) return;
+  const slot = e.target.closest('.bracelet-slot');
+  if (!slot || !slot.classList.contains('empty')) return;
+
+  const name = selectedCharm.dataset.name;
+  const price = parseFloat(selectedCharm.dataset.price);
+  const img = selectedCharm.querySelector('img').src;
+  const isChain = selectedCharm.dataset.chain === 'true';
+  const index = Array.from(braceletPreview.children).indexOf(slot);
+  const slots = braceletPreview.querySelectorAll('.bracelet-slot');
+
+  if (isChain) {
+    const secondIndex = index + 3;
+    if (secondIndex >= slots.length || !slots[secondIndex].classList.contains('empty')) {
+      alert('Not enough space or overlapping charm for this chain charm.');
+      return;
+    }
+    const chainId = `chain-${chainIdCounter++}`;
+    const firstImg = `images/${name}${name[1]}.png`;
+    const secondImg = `images/${name}${name[1]}${name[1]}.png`;
+    placeCharmInSlot(slots[index], name, firstImg, price, chainId);
+    placeCharmInSlot(slots[secondIndex], name, secondImg, 0, chainId);
+    charmCounts[name] = charmCounts[name] || { count: 0, price };
+    charmCounts[name].count++;
+  } else {
+    placeCharmInSlot(slot, name, img, price);
+    charmCounts[name] = charmCounts[name] || { count: 0, price };
+    charmCounts[name].count++;
+  }
+
+  updateSelectedCharmsTable();
+  updateTotal();
+  updateCounter();
+  updateCharmOrder();
+
+  // Deselect after placing
+  selectedCharm = null;
+  document.querySelectorAll('.charm').forEach(c => c.classList.remove('selected-charm'));
+});
+
 });
